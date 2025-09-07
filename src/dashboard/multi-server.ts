@@ -118,29 +118,6 @@ export class MultiProjectDashboardServer {
       wildcard: false // Disable wildcard to prevent catching all routes
     });
 
-    // Special handling for app.js in development mode
-    // In dev mode, app.js might be in dist/dashboard while we're running from src/dashboard
-    this.app.get('/app.js', async (request, reply) => {
-      const { existsSync } = require('fs');
-      const appJsPath = join(__dirname, 'app.js');
-      const distAppJsPath = join(__dirname, '..', '..', 'dist', 'dashboard', 'app.js');
-      
-      // Try current directory first (production)
-      if (existsSync(appJsPath)) {
-        return reply.sendFile('app.js');
-      }
-      // Try dist directory (development)
-      else if (existsSync(distAppJsPath)) {
-        const { readFile } = require('fs/promises');
-        const content = await readFile(distAppJsPath);
-        reply.type('application/javascript');
-        return reply.send(content);
-      }
-      // File not found
-      else {
-        return reply.code(404).send({ error: 'app.js not found - run npm run build:dashboard' });
-      }
-    });
 
     // WebSocket endpoint
     const self = this;
