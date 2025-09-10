@@ -1,111 +1,111 @@
-# Spec Steering Setup Command
+# spec指导文档设置命令
 
-Create or update steering documents that provide persistent project context.
+创建或更新提供持久项目上下文的指导文档。
 
-## Usage
+## 使用方法
 ```
 /spec-steering-setup
 ```
 
-## Instructions
-You are helping set up steering documents that will guide all future spec development. These documents provide persistent context about the product vision, technology stack, and project structure.
+## 操作说明
+你正在协助设置将指导所有未来spec开发的“指导文档”。这些文档提供关于产品愿景、技术栈和项目结构的持久化上下文。
 
-## Process
+## 操作流程
 
-1. **Check for Existing Steering Documents**
-   - Look for `.claude/steering/` directory
-   - Check for existing product.md, tech.md, structure.md files
-   - If they exist, load and display current content
+1. **检查现有指导文档**
+    - 查找 `.claude/steering/` 目录
+    - 检查是否存在 product.md、tech.md、structure.md 文件
+    - 若存在，加载并显示当前内容
 
-2. **Analyze the Project**
-   - Review the codebase to understand:
-     - Project type and purpose
-     - Technology stack in use
-     - Directory structure and patterns
-     - Coding conventions
-     - Existing features and functionality
-   - Look for:
-     - package.json, requirements.txt, go.mod, etc.
-     - README files
-     - Configuration files
-     - Source code structure
+2. **分析项目**
+    - 审查代码库以理解：
+        - 项目类型与目的
+        - 当前使用的技术栈
+        - 目录结构与模式
+        - 编码规范
+        - 现有功能与特性
+    - 查找以下文件：
+        - package.json、requirements.txt、go.mod 等依赖文件
+        - README 文件
+        - 配置文件
+        - 源代码结构
 
-3. **Present Inferred Details**
-   - Show the user what you've learned about:
-     - **Product**: Purpose, features, target users
-     - **Technology**: Frameworks, libraries, tools
-     - **Structure**: File organization, naming conventions
-   - Format as:
-     ```
-     Based on my analysis, here's what I've inferred:
-     
-     **Product Details:**
-     - [Inferred detail 1]
-     - [Inferred detail 2]
-     
-     **Technology Stack:**
-     - [Inferred tech 1]
-     - [Inferred tech 2]
-     
-     **Project Structure:**
-     - [Inferred pattern 1]
-     - [Inferred pattern 2]
-     ```
-   - Ask: "Do these inferred details look correct? Please let me know which ones to keep or discard."
+3. **呈现推断信息**
+    - 向用户展示你所推断出的内容：
+        - **产品**：目的、功能、目标用户
+        - **技术**：框架、库、工具
+        - **结构**：文件组织、命名规范
+    - 格式如下：
+      ```
+      根据我的分析，我推断出以下信息：
+ 
+      **产品详情：**
+      - [推断内容1]
+      - [推断内容2]
+ 
+      **技术栈：**
+      - [推断技术1]
+      - [推断技术2]
+ 
+      **项目结构：**
+      - [推断模式1]
+      - [推断模式2]
+      ```
+    - 询问：“这些推断信息是否正确？请告诉我哪些需要保留或删除。”
 
-4. **Gather Missing Information**
-   - Based on user feedback, identify gaps
-   - Ask targeted questions to fill in missing details:
-     
-     **Product Questions:**
-     - What is the main problem this product solves?
-     - Who are the primary users?
-     - What are the key business objectives?
-     - What metrics define success?
-     
-     **Technology Questions:**
-     - Are there any technical constraints or requirements?
-     - What third-party services are integrated?
-     - What are the performance requirements?
-     
-     **Structure Questions:**
-     - Are there specific coding standards to follow?
-     - How should new features be organized?
-     - What are the testing requirements?
+4. **收集缺失信息**
+    - 根据用户反馈，识别信息缺口
+    - 提出针对性问题以补充缺失内容：
 
-5. **Generate Steering Documents**
-   - Create `.claude/steering/` directory if it doesn't exist
-   - Generate three files based on templates and gathered information:
-     
-     **product.md**: Product vision, users, features, objectives
-     **tech.md**: Technology stack, tools, constraints, decisions
-     **structure.md**: File organization, naming conventions, patterns
+      **产品相关问题：**
+        - 本产品主要解决什么问题？
+        - 主要用户群体是谁？
+        - 关键业务目标是什么？
+        - 如何衡量成功？
 
-6. **Review and Confirm**
-   - Present the generated documents to the user
-   - Ask for final approval before saving
-   - Make any requested adjustments
+      **技术相关问题：**
+        - 是否存在技术约束或特定要求？
+        - 集成了哪些第三方服务？
+        - 性能要求有哪些？
 
-## Important Notes
+      **结构相关问题：**
+        - 是否需遵循特定编码标准？
+        - 新功能应如何组织？
+        - 测试要求有哪些？
 
-- **Steering documents are persistent** - they will be referenced in all future spec commands
-- **Keep documents focused** - each should cover its specific domain
-- **Update regularly** - steering docs should evolve with the project
-- **Never include sensitive data** - no passwords, API keys, or credentials
+5. **生成指导文档**
+    - 若 `.claude/steering/` 目录不存在，则创建该目录
+    - 根据模板和收集的信息生成三个文件：
 
-## Example Flow
+      **product.md**：产品愿景、用户、功能、目标  
+      **tech.md**：技术栈、工具、约束、技术决策  
+      **structure.md**：文件组织、命名规范、架构模式
 
-1. Analyze project and find it's a React/TypeScript app
-2. Present inferred details about the e-commerce platform
-3. User confirms most details but clarifies target market
-4. Ask about performance requirements and third-party services
-5. Generate steering documents with all gathered information
-6. User reviews and approves the documents
-7. Save to `.claude/steering/` directory
+6. **审查与确认**
+    - 向用户展示生成的文档
+    - 在保存前请求最终批准
+    - 根据用户要求进行调整
 
-## Next Steps
-After steering documents are created, they will automatically be referenced during:
-- `/spec-create` - Align requirements with product vision
-- `/spec-design` - Follow established tech patterns
-- `/spec-tasks` - Use correct file organization
-- `/spec-execute` - Implement following all conventions
+## 重要说明
+
+- **指导文档具有持久性**——将在所有未来的spec命令中被引用
+- **保持文档聚焦**——每份文档应覆盖其特定领域
+- **定期更新**——指导文档应随项目演进
+- **绝不包含敏感数据**——不得包含密码、API密钥或凭证
+
+## 示例流程
+
+1. 分析项目，发现是 React/TypeScript 应用
+2. 呈现关于电商平台的推断信息
+3. 用户确认大部分内容，但澄清了目标市场
+4. 询问性能要求和第三方服务集成情况
+5. 基于所有收集信息生成指导文档
+6. 用户审查并批准文档
+7. 保存至 `.claude/steering/` 目录
+
+## 后续步骤
+指导文档创建完成后，将在以下命令中自动引用：
+- `/spec-create` —— 使需求与产品愿景对齐
+- `/spec-design` —— 遵循既定技术模式
+- `/spec-tasks` —— 使用正确的文件组织方式
+- `/spec-execute` —— 按照所有约定进行实施

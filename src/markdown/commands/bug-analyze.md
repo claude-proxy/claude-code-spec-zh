@@ -1,25 +1,25 @@
-# Bug Analyze Command
+# bug分析命令
 
-Investigate and analyze the root cause of a reported bug.
+调查并分析已报告bug的根本原因。
 
-## Usage
+## 使用方式
 ```
-/bug-analyze [bug-name]
+/bug-analyze [bug名称]
 ```
 
-## Phase Overview
-**Your Role**: Investigate the bug and identify the root cause
+## 阶段概览
+**您的角色**：调查bug并识别根本原因
 
-This is Phase 2 of the bug fix workflow. Your goal is to understand why the bug is happening and plan the fix approach.
+这是bug修复工作流的第二阶段。您的目标是理解bug发生的原因，并规划修复方案。
 
-## Instructions
+## 操作说明
 
-**Manual Analysis Process**:
+**手动分析流程**：
 
-1. **Prerequisites**
-   - Ensure report.md exists and is complete
-   - Load the bug report for context
-   - **Load steering documents**: 
+1. **前置条件**
+   - 确保 report.md 存在且内容完整
+   - 加载bug报告以获取上下文
+   - **加载调控文档**：
      ```bash
      # Windows:
      claude-code-spec-workflow get-content "C:\path\to\project\.claude\steering\tech.md"
@@ -29,78 +29,78 @@ This is Phase 2 of the bug fix workflow. Your goal is to understand why the bug 
      claude-code-spec-workflow get-content "/path/to/project/.claude/steering/tech.md"
      claude-code-spec-workflow get-content "/path/to/project/.claude/steering/structure.md"
      ```
-   - Understand the reported issue completely
+   - 完全理解所报告的问题
 
-2. **Investigation Process**
-   1. **Code Investigation**
-      - Search codebase for relevant functionality
-      - Identify files, functions, and components involved
-      - Map data flow and identify potential failure points
-      - Look for similar issues or patterns
+2. **调查流程**
+   1. **代码调查**
+      - 在代码库中搜索相关功能
+      - 识别涉及的文件、函数和组件
+      - 映射数据流，定位潜在故障点
+      - 查找类似问题或模式
 
-   2. **Root Cause Analysis**
-      - Determine the underlying cause of the bug
-      - Identify contributing factors
-      - Understand why existing tests didn't catch this
-      - Assess impact and risks
+   2. **根本原因分析**
+      - 确定bug的底层原因
+      - 识别促成因素
+      - 分析现有测试为何未捕获此问题
+      - 评估影响范围与风险
 
-   3. **Solution Planning**
-      - Design fix strategy
-      - Consider alternative approaches
-      - Plan testing approach
-      - Identify potential risks
+   3. **解决方案规划**
+      - 设计修复策略
+      - 考虑替代方案
+      - 规划测试方法
+      - 识别潜在风险
 
-3. **Create Analysis Document**
-   - **Template to Follow**: Use the bug analysis template from the pre-loaded context above (do not reload)
-   - **Read and follow**: Use the bug analysis template and follow all sections precisely
-   - Document investigation findings following the template structure
+3. **创建分析文档**
+   - **遵循模板**：使用上方预加载上下文中的bug分析模板（请勿重新加载）
+   - **阅读并遵循**：严格按模板结构填写所有章节
+   - 按模板结构记录调查发现
 
-## Template Usage
-- **Follow exact structure**: Use `.claude/templates/bug-analysis-template.md` precisely
-- **Include all sections**: Don't omit any required template sections
-- **Detailed analysis**: Follow the template's format for comprehensive investigation
+## 模板使用要求
+- **严格遵循结构**：精确使用 `.claude/templates/bug-analysis-template.md`
+- **包含所有章节**：不得遗漏任何必需模板章节
+- **详尽分析**：按模板格式进行全面调查
 
-4. **Investigation Guidelines**
-   - **Follow tech.md standards**: Understand existing patterns before proposing changes
-   - **Respect structure.md**: Know where fixes should be placed
-   - **Search thoroughly**: Look for existing utilities, similar bugs, related code
-   - **Think systematically**: Consider data flow, error handling, edge cases
-   - **Plan for testing**: How will you verify the fix works
+4. **调查指南**
+   - **遵循 tech.md 标准**：在提出变更前理解现有模式
+   - **尊重 structure.md**：明确修复应放置的位置
+   - **彻底搜索**：查找现有工具、相似bug、相关代码
+   - **系统性思考**：考虑数据流、错误处理、边界情况
+   - **规划测试**：如何验证修复有效
 
-5. **Approval Process**
-   - Present the complete analysis document
-   - **Show code reuse opportunities**: Note existing utilities that can help
-   - **Highlight integration points**: Show how fix fits with existing architecture
-   - Ask: "Does this analysis look correct? If so, we can proceed to implement the fix."
-   - Incorporate feedback and revisions
-   - Continue until explicit approval
-   - **CRITICAL**: Do not proceed without explicit approval
+5. **审批流程**
+   - 提交完整的分析文档
+   - **展示代码复用机会**：注明可协助修复的现有工具
+   - **突出集成点**：说明修复方案如何融入现有架构
+   - 询问：“此分析是否正确？如无问题，我们将进入实施修复阶段。”
+   - 整合反馈并修订
+   - 持续迭代直至获得明确批准
+   - **关键要求**：未经用户明确批准，严禁进入下一阶段
 
-## Analysis Guidelines
+## 分析指南
 
-### Code Investigation
-- Use search tools to find relevant code
-- Understand existing error handling patterns
-- Look for similar functionality that works correctly
-- Check for recent changes that might have caused the issue
+### 代码调查
+- 使用搜索工具定位相关代码
+- 理解现有错误处理模式
+- 查找行为正确的相似功能
+- 检查可能导致问题的近期变更
 
-### Root Cause Identification
-- Don't just fix symptoms - find the real cause
-- Consider edge cases and error conditions
-- Look for design issues vs implementation bugs
-- Understand the intended behavior vs actual behavior
+### 根本原因识别
+- 不仅修复表象，要定位真实根源
+- 考虑边界情况与错误条件
+- 区分设计bug与实现错误
+- 明确预期行为与实际行为差异
 
-### Solution Design
-- Prefer minimal, targeted fixes
-- Reuse existing patterns and utilities
-- Consider backwards compatibility
-- Plan for future prevention of similar bugs
+### 解决方案设计
+- 优先采用最小化、精准修复
+- 复用现有模式与工具
+- 考虑向后兼容性
+- 规划预防同类bug的措施
 
-## Critical Rules
-- **NEVER** proceed to the next phase without explicit user approval
-- Accept only clear affirmative responses: "yes", "approved", "looks good", etc.
-- If user provides feedback, make revisions and ask for approval again
-- Continue revision cycle until explicit approval is received
+## 关键规则
+- **严禁**未经用户明确批准进入下一阶段
+- 仅接受清晰肯定答复：“是”、“批准”、“没问题”等
+- 若用户反馈意见，需修改后重新请求批准
+- 持续修订直至获得明确批准
 
-## Next Phase
-After approval, proceed to `/bug-fix`.
+## 下一阶段
+获得批准后，请执行 `/bug-fix`。

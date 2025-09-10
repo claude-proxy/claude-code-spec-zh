@@ -1,44 +1,44 @@
-# Bug Status Command
+# bug状态命令
 
-Show current status of all bug fixes or a specific bug fix.
+显示所有bug修复的当前状态，或指定某一个bug修复的状态。
 
-## Usage
+## 使用方式
 ```
-/bug-status [bug-name]
+/bug-status [bug名称]
 ```
 
-## Instructions
-Display the current status of bug fix workflows.
+## 操作说明  
+显示bug修复工作流的当前状态。
 
-1. **If no bug-name provided:**
-   - List all bugs in `.claude/bugs/` directory
-   - Show current phase for each bug
-   - Display completion status
+1. **若未提供bug名称**：
+   - 列出 `.claude/bugs/` 目录下所有bug
+   - 显示每个bug当前所处阶段
+   - 展示完成状态概览
 
-2. **If bug-name provided:**
-   - Show detailed status for that bug
-   - Display current workflow phase
-   - Show completed vs pending phases
-   - List next recommended actions
+2. **若提供bug名称**：
+   - 显示该bug的详细状态
+   - 展示当前所处工作流阶段
+   - 列出已完成与待处理阶段
+   - 提供下一步推荐操作
 
-3. **Status Information:**
-   - Report: [Complete/In Progress/Pending]
-   - Analysis: [Complete/In Progress/Pending]
-   - Fix: [Complete/In Progress/Pending]
-   - Verification: [Complete/In Progress/Pending]
+3. **状态信息项**：
+   - 报告阶段：[已完成 / 进行中 / 待开始]
+   - 分析阶段：[已完成 / 进行中 / 待开始]
+   - 修复阶段：[已完成 / 进行中 / 待开始]
+   - 验证阶段：[已完成 / 进行中 / 待开始]
 
-4. **Output Format:**
+4. **输出格式示例**：
    ```
-   Bug: login-timeout
-   Phase: Fix Implementation
-   Progress: Report ✅ | Analysis ✅ | Fix 🔄 | Verification ⏳
-   Status: Implementing fix for session timeout issue
-   Next: Complete implementation and verify fix works
+   bug：login-timeout
+   当前阶段：修复实施中
+   进度：报告 ✅ | 分析 ✅ | 修复 🔄 | 验证 ⏳
+   状态：正在实施会话超时问题的修复
+   下一步：完成修复并验证功能恢复正常
    ```
 
-## Bug Fix Phases
-- **Report**: Bug description and impact assessment
-- **Analysis**: Root cause investigation and solution planning
-- **Fix**: Implementation of the planned solution
-- **Verification**: Testing and confirmation of resolution
-- **Complete**: Bug fully resolved and verified
+## bug修复阶段说明
+- **报告阶段**：描述bug现象与影响评估
+- **分析阶段**：调查根本原因并规划修复方案
+- **修复阶段**：实施已规划的解决方案
+- **验证阶段**：测试并确认问题已解决
+- **已完成**：bug彻底修复并通过验证

@@ -1,45 +1,45 @@
-# Spec List Command
+# spec列表命令
 
-List all specs in the current project.
+列出当前项目中的所有spec。
 
-## Usage
+## 使用方法
 ```
 /spec-list
 ```
 
-## Instructions
-Display a comprehensive list of all specs in the project.
+## 操作说明
+显示项目中所有spec的综合列表。
 
-1. **Scan Directory**
-   - Look in `.claude/specs/` directory
-   - Find all spec directories
-   - Check for required files (requirements.md, design.md, tasks.md)
+1. **扫描目录**
+    - 查找 `.claude/specs/` 目录
+    - 识别所有spec子目录
+    - 检查必需文件是否存在（requirements.md、design.md、tasks.md）
 
-2. **Display Information**
-   - Feature name
-   - Current phase
-   - Completion status
-   - Last modified date
-   - Brief description from requirements
+2. **显示信息**
+    - 功能名称
+    - 当前阶段
+    - 完成状态
+    - 最后修改日期
+    - 来自需求文档的简要描述
 
-3. **Output Format**
+3. **输出格式**
    ```
-   📋 Project Specs Overview
+   📋 项目spec概览
 
-   1. user-authentication (Complete)
-      Phase: Implementation (7/8 tasks)
-      Last updated: 2025-01-15
+   1. user-authentication（已完成）
+      阶段：实施中（7/8 项任务）
+      最后更新：2025-01-15
 
-   2. data-export (In Progress)
-      Phase: Design
-      Last updated: 2025-01-14
+   2. data-export（进行中）
+      阶段：设计
+      最后更新：2025-01-14
 
-   3. notification-system (Planning)
-      Phase: Requirements
-      Last updated: 2025-01-13
+   3. notification-system（规划中）
+      阶段：需求
+      最后更新：2025-01-13
    ```
 
-4. **Additional Actions**
-   - Show total spec count
-   - Highlight specs needing attention
-   - Suggest next actions for each spec
+4. **附加操作**
+    - 显示spec总数
+    - 高亮标注需关注的spec（如停滞、阻塞、逾期未更新）
+    - 为每个spec建议下一步操作（如“批准需求”、“开始设计”、“执行任务1”等）

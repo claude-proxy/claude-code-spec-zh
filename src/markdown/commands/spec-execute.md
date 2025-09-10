@@ -1,133 +1,130 @@
-# Spec Execute Command
+# spec执行命令
 
-Execute specific tasks from the approved task list.
+执行已批准任务列表中的特定任务。
 
-## Usage
+## 使用方法
 ```
-/spec-execute [task-id] [feature-name]
+/spec-execute [任务ID] [功能名称]
 ```
 
-## Phase Overview
-**Your Role**: Execute tasks systematically with validation
+## 阶段概览
+**你的角色**：系统化执行任务并进行验证
 
-This is Phase 4 of the spec workflow. Your goal is to implement individual tasks from the approved task list, one at a time.
+这是spec工作流的第四阶段。你的目标是逐个实现已批准任务列表中的各项任务。
 
-## Instructions
+## 操作说明
 
-**Execution Steps**:
+**执行步骤**：
 
-**Step 1: Load Context**
+**步骤1：加载上下文**
 ```bash
-# Load steering documents (if available)
+# 加载指导文档（如可用）
 claude-code-spec-workflow get-steering-context
 
-# Load specification context
-claude-code-spec-workflow get-spec-context {feature-name}
+# 加载spec上下文
+claude-code-spec-workflow get-spec-context {功能名称}
 
-# Load specific task details
-claude-code-spec-workflow get-tasks {feature-name} {task-id} --mode single
+# 加载特定任务详情
+claude-code-spec-workflow get-tasks {功能名称} {任务ID} --mode single
 ```
 
-**Step 2: Execute with Agent**
-Use the `spec-task-executor` agent:
+**步骤2：通过代理执行**
+使用 `spec-task-executor` 代理：
 ```
-Use the spec-task-executor agent to implement task {task-id} for the {feature-name} specification.
+请使用 spec-task-executor 代理为 {功能名称} spec实现任务 {任务ID}。
 
-## Steering Context
-[PASTE THE COMPLETE OUTPUT FROM get-steering-context COMMAND HERE]
+## 指导上下文
+[在此粘贴 get-steering-context 命令的完整输出]
 
-## Specification Context
-[PASTE THE REQUIREMENTS AND DESIGN SECTIONS FROM get-spec-context COMMAND HERE]
+## spec上下文
+[在此粘贴 get-spec-context 命令输出的需求和设计部分]
 
-## Task Details
-[PASTE THE OUTPUT FROM get-tasks SINGLE COMMAND HERE]
+## 任务详情
+[在此粘贴 get-tasks single 命令的输出]
 
-## Instructions
-- Implement ONLY the specified task: {task-id}
-- Follow all project conventions and leverage existing code
-- Mark the task as complete using: claude-code-spec-workflow get-tasks {feature-name} {task-id} --mode complete
-- Provide a completion summary
+## 指令
+- 仅实现指定任务：{任务ID}
+- 遵循所有项目约定并复用现有代码
+- 使用以下命令将任务标记为完成：
+  claude-code-spec-workflow get-tasks {功能名称} {任务ID} --mode complete
+- 提供完成摘要
 ```
 
+3. **任务执行**
+   - 一次只专注于一个任务
+   - 如果任务包含子任务，先从子任务开始
+   - 遵循 design.md 中的实现细节
+   - 根据任务中指定的需求进行验证
 
-3. **Task Execution**
-   - Focus on ONE task at a time
-   - If task has sub-tasks, start with those
-   - Follow the implementation details from design.md
-   - Verify against requirements specified in the task
+4. **实施指南**
+   - 编写清晰、可维护的代码
+   - **遵循指导文档**：遵守 tech.md 中的模式和 structure.md 中的约定
+   - 遵循现有代码模式和约定
+   - 包含适当的错误处理
+   - 在指定位置添加单元测试
+   - 为复杂逻辑添加注释
 
-4. **Implementation Guidelines**
-   - Write clean, maintainable code
-   - **Follow steering documents**: Adhere to patterns in tech.md and conventions in structure.md
-   - Follow existing code patterns and conventions
-   - Include appropriate error handling
-   - Add unit tests where specified
-   - Document complex logic
+5. **验证**
+   - 验证实现是否满足验收标准
+   - 如存在测试则运行测试
+   - 检查是否存在代码风格或类型错误
+   - 确保与现有代码集成无误
 
-5. **Validation**
-   - Verify implementation meets acceptance criteria
-   - Run tests if they exist
-   - Check for lint/type errors
-   - Ensure integration with existing code
-
-6. **Task Completion Protocol**
-When completing any task during `/spec-execute`:
-   1. **Mark task complete**: Use the get-tasks script to mark completion:
+6. **任务完成协议**
+在使用 `/spec-execute` 完成任何任务时：
+   1. **标记任务完成**：使用 get-tasks 脚本标记完成状态：
       ```bash
-      # Cross-platform command:
-      claude-code-spec-workflow get-tasks {feature-name} {task-id} --mode complete
+      # 跨平台命令：
+      claude-code-spec-workflow get-tasks {功能名称} {任务ID} --mode complete
       ```
-   2. **Confirm to user**: State clearly "Task X has been marked as complete"
-   3. **Stop execution**: Do not proceed to next task automatically
-   4. **Wait for instruction**: Let user decide next steps
+   2. **向用户确认**：明确声明“任务 X 已标记为完成”
+   3. **停止执行**：不要自动进入下一个任务
+   4. **等待指令**：让用户决定下一步操作
 
+## 关键工作流规则
 
+### 任务执行
+- **仅**在实施阶段一次执行一个任务
+- **关键**：停止前必须使用 get-tasks --mode complete 标记已完成任务
+- **始终**在完成一个任务后停止
+- **绝不**自动进入下一个任务
+- **必须**等待用户请求再执行下一个任务
+- **确认**任务完成状态给用户
 
+### 需求引用
+- **所有**任务必须使用 _需求：X.Y_ 格式引用具体需求
+- **确保**从需求到设计再到实现的可追溯性
+- **验证**实现是否符合所引用的需求
 
-## Critical Workflow Rules
+## 任务选择
+如果未指定任务ID：
+- 查看该spec的 tasks.md 文件
+- 推荐下一个待处理任务
+- 在继续前请用户确认
 
-### Task Execution
-- **ONLY** execute one task at a time during implementation
-- **CRITICAL**: Mark completed tasks using get-tasks --mode complete before stopping
-- **ALWAYS** stop after completing a task
-- **NEVER** automatically proceed to the next task
-- **MUST** wait for user to request next task execution
-- **CONFIRM** task completion status to user
+如果未指定功能名称：
+- 检查 `.claude/specs/` 目录中的可用spec
+- 若仅存在一个spec，则直接使用
+- 若存在多个spec，则询问用户选择哪一个
+- 若未找到任何spec，则显示错误信息
 
-### Requirement References
-- **ALL** tasks must reference specific requirements using _Requirements: X.Y_ format
-- **ENSURE** traceability from requirements through design to implementation
-- **VALIDATE** implementations against referenced requirements
-
-## Task Selection
-If no task-id specified:
-- Look at tasks.md for the spec
-- Recommend the next pending task
-- Ask user to confirm before proceeding
-
-If no feature-name specified:
-- Check `.claude/specs/` directory for available specs
-- If only one spec exists, use it
-- If multiple specs exist, ask user which one to use
-- Display error if no specs are found
-
-## Examples
+## 示例
 ```
 /spec-execute 1 user-authentication
 /spec-execute 2.1 user-authentication
 ```
 
-## Important Rules
-- Only execute ONE task at a time
-- **ALWAYS** mark completed tasks using get-tasks --mode complete
-- Always stop after completing a task
-- Wait for user approval before continuing
-- Never skip tasks or jump ahead
-- Confirm task completion status to user
+## 重要规则
+- 一次只执行一个任务
+- **始终**使用 get-tasks --mode complete 标记已完成任务
+- 完成任务后必须停止
+- 继续前需等待用户批准
+- 不得跳过任务或提前跳跃
+- 向用户确认任务完成状态
 
-## Next Steps
-After task completion, you can:
-- Address any issues identified in the review
-- Run tests if applicable
-- Execute the next task using `/spec-execute [next-task-id]`
-- Check overall progress with `/spec-status {feature-name}`
+## 后续步骤
+任务完成后，你可以：
+- 解决审查中发现的任何问题
+- 如适用，运行测试
+- 使用 `/spec-execute [下一个任务ID]` 执行下一个任务
+- 使用 `/spec-status {功能名称}` 检查整体进度

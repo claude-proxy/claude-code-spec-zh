@@ -1,44 +1,44 @@
-# Spec Status Command
+# spec状态命令
 
-Show current status of all specs or a specific spec.
+显示所有spec或指定spec的当前状态。
 
-## Usage
+## 使用方法
 ```
-/spec-status [feature-name]
+/spec-status [功能名称]
 ```
 
-## Instructions
-Display the current status of spec workflows.
+## 操作说明
+显示spec工作流的当前状态。
 
-1. **If no feature-name provided:**
-   - List all specs in `.claude/specs/` directory
-   - Show current phase for each spec
-   - Display completion status
+1. **若未提供功能名称：**
+    - 列出 `.claude/specs/` 目录下的所有spec
+    - 显示每个spec的当前阶段
+    - 展示完成状态概览
 
-2. **If feature-name provided:**
-   - Show detailed status for that spec
-   - Display current workflow phase
-   - Show completed vs pending tasks
-   - List next recommended actions
+2. **若提供功能名称：**
+    - 显示该spec的详细状态
+    - 标明当前工作流阶段
+    - 展示已完成与待处理任务数量
+    - 列出推荐的下一步操作
 
-3. **Status Information:**
-   - Requirements: [Complete/In Progress/Pending]
-   - Design: [Complete/In Progress/Pending]
-   - Tasks: [Complete/In Progress/Pending]
-   - Implementation: [X/Y tasks complete]
+3. **状态信息包含：**
+    - 需求阶段：[已完成 / 进行中 / 待处理]
+    - 设计阶段：[已完成 / 进行中 / 待处理]
+    - 任务阶段：[已完成 / 进行中 / 待处理]
+    - 实施阶段：[已完成 X / 共 Y 项任务]
 
-4. **Output Format:**
+4. **输出格式示例：**
    ```
-   Spec: user-authentication
-   Phase: Implementation
-   Progress: Requirements ✅ | Design ✅ | Tasks ✅
-   Implementation: 3/8 tasks complete
-   Next: Execute task 4 - "Implement password validation"
+   spec：user-authentication
+   当前阶段：实施中
+   进度：需求 ✅ | 设计 ✅ | 任务 ✅
+   实施进度：3/8 项任务已完成
+   下一步建议：执行任务 4 —— “实现密码验证功能”
    ```
 
-## Workflow Phases
-- **Requirements**: Gathering and documenting requirements
-- **Design**: Creating technical design and architecture
-- **Tasks**: Breaking down into implementation tasks
-- **Implementation**: Executing individual tasks
-- **Complete**: All tasks finished and integrated
+## 工作流阶段说明
+- **需求阶段**：收集与文档化功能需求
+- **设计阶段**：创建技术设计与架构方案
+- **任务阶段**：拆解为可执行的开发任务
+- **实施阶段**：逐项执行具体任务
+- **已完成**：所有任务完成并成功集成

@@ -1,120 +1,120 @@
-# Bug Fix Command
+# bug修复命令
 
-Implement the fix for the analyzed bug.
+根据已批准的分析结果，实施bug修复。
 
-## Usage
+## 使用方式
 ```
-/bug-fix [bug-name]
+/bug-fix [bug名称]
 ```
 
-## Phase Overview
-**Your Role**: Implement the solution based on the approved analysis
+## 阶段概览
+**您的角色**：根据已批准的分析文档实施修复方案
 
-This is Phase 3 of the bug fix workflow. Your goal is to implement the fix while following project conventions.
+这是bug修复工作流的第三阶段。您的目标是在遵循项目规范的前提下完成修复实施。
 
-## Instructions
+## 操作说明
 
-You are working on the fix implementation phase of the bug fix workflow.
+您当前处于bug修复工作流的“修复实施”阶段。
 
-1. **Prerequisites & Context Loading**
-   - Ensure analysis.md exists and is approved
+1. **前置条件与上下文加载**
+   - 确保 analysis.md 存在且已获批准
 
-   **Load ALL Context Once (Hierarchical Context Loading):**
+   **一次性加载全部上下文（分层上下文加载）：**
    ```bash
-   # Load steering documents (if available)
+   # 加载调控文档（如存在）
    claude-code-spec-workflow get-steering-context
    ```
 
-   **Bug documents to read directly:**
-   - `.claude/bugs/{bug-name}/report.md`
-   - `.claude/bugs/{bug-name}/analysis.md`
-   - Understand the planned fix approach completely
+   **需直接读取的bug文档：**
+   - `bugs/{bugName}/report.md`
+   - `bugs/{bugName}/analysis.md`
+   - 完全理解已规划的修复方案
 
-2. **Implementation Process**
-   1. **Follow the Implementation Plan**
-      - Execute changes exactly as outlined in analysis.md
-      - Make targeted, minimal changes
-      - Follow existing code patterns and conventions
+2. **实施流程**
+   1. **遵循实施方案**
+      - 严格按 analysis.md 中规划的内容执行变更
+      - 进行精准、最小化修改
+      - 遵循现有代码模式与项目规范
 
-   2. **Code Changes**
-      - Implement the fix following project standards
-      - Add appropriate error handling
-      - Include logging or debugging aids if needed
-      - Update or add tests as specified
+   2. **代码变更**
+      - 按项目标准实施修复
+      - 添加适当的错误处理机制
+      - 如有必要，增加日志或调试辅助
+      - 按要求更新或新增测试用例
 
-   3. **Quality Checks**
-      - Verify fix addresses the root cause
-      - Ensure no unintended side effects
-      - Follow code style and conventions
-      - Run tests and checks
+   3. **质量检查**
+      - 验证修复是否针对根本原因
+      - 确保无意外副作用
+      - 遵守代码风格与规范
+      - 运行测试与检查
 
-3. **Implementation Guidelines**
-   - **Follow steering documents**: Adhere to patterns in tech.md and conventions in structure.md
-   - **Make minimal changes**: Fix only what's necessary
-   - **Preserve existing behavior**: Don't break unrelated functionality
-   - **Use existing patterns**: Leverage established code patterns and utilities
-   - **Add appropriate tests**: Ensure the bug won't return
+3. **实施指南**
+   - **遵循调控文档**：遵守 tech.md 中的技术模式与 structure.md 中的结构约定
+   - **最小化变更**：仅修复必要部分
+   - **保持现有行为**：不破坏无关功能
+   - **复用现有模式**：利用已建立的代码模式与工具函数
+   - **添加适当测试**：确保该bug不会重现
 
-4. **Testing Requirements**
-   - Test the specific bug scenario
-   - Verify related functionality still works
-   - Run existing test suite if available
-   - Add regression tests for this bug
+4. **测试要求**
+   - 测试原始bug复现路径
+   - 验证相关功能仍正常工作
+   - 如有测试套件，运行完整测试
+   - 为本bug添加回归测试
 
-5. **Documentation Updates**
-   - Update code comments if needed
-   - Document any non-obvious changes
-   - Update error messages if applicable
+5. **文档更新**
+   - 如有必要，更新代码注释
+   - 记录任何非显而易见的变更
+   - 如适用，更新错误提示信息
 
-## Implementation Rules
+## 实施规则
 
-### Code Quality
-- Follow project coding standards
-- Use existing utilities and patterns
-- Add proper error handling
-- Include meaningful comments for complex logic
+### 代码质量
+- 遵循项目编码标准
+- 复用现有工具与模式
+- 添加恰当的错误处理
+- 为复杂逻辑添加有意义的注释
 
-### Testing Strategy
-- Test the original bug reproduction steps
-- Verify fix doesn't break related functionality
-- Add tests to prevent regression
-- Run full test suite if available
+### 测试策略
+- 测试原始bug复现步骤
+- 验证修复未破坏相关功能
+- 添加防止回归的测试
+- 如有完整测试套件，务必运行
 
-### Change Management
-- Make atomic, focused changes
-- Document the fix approach
-- Preserve existing API contracts
-- Consider backwards compatibility
+### 变更管理
+- 进行原子化、聚焦式变更
+- 记录修复方案
+- 保持现有 API 契约
+- 考虑向后兼容性
 
-## Completion Process
+## 完成流程
 
-1. **Implement the Fix**
-   - Make the necessary code changes
-   - Follow the implementation plan from analysis.md
-   - Ensure code follows project conventions
+1. **实施修复**
+   - 进行必要的代码变更
+   - 严格遵循 analysis.md 中的实施方案
+   - 确保代码符合项目规范
 
-2. **Verify Implementation**
-   - Test that the original bug is resolved
-   - Verify no new issues introduced
-   - Run relevant tests and checks
+2. **验证实施**
+   - 测试原始bug是否已解决
+   - 验证未引入新问题
+   - 运行相关测试与检查
 
-3. **Update Documentation**
-   - Document the changes made
-   - Update any relevant comments or docs
+3. **更新文档**
+   - 记录所做变更
+   - 更新相关注释或文档
 
-4. **Confirm Completion**
-   - Present summary of changes made
-   - Show test results confirming fix
+4. **确认完成**
+   - 提交变更摘要
+   - 展示测试结果，证明修复有效
 
-5. **Final Confirmation**
-   - Ask: "The fix has been implemented and reviewed. Should we proceed to verification?"
-   - **CRITICAL**: Wait for user approval before proceeding
+5. **最终确认**
+   - 询问：“修复已实施并完成自检。是否进入验证阶段？”
+   - **关键要求**：未经用户批准，严禁进入下一阶段
 
-## Critical Rules
-- **ONLY** implement the fix outlined in the approved analysis
-- **ALWAYS** test the fix thoroughly
-- **NEVER** make changes beyond the planned fix scope
-- **MUST** wait for user approval before proceeding to verification
+## 关键规则
+- **仅**实施已批准分析文档中规划的修复内容
+- **务必**全面测试修复结果
+- **严禁**超出计划范围进行任何额外变更
+- **必须**等待用户批准后方可进入验证阶段
 
-## Next Phase
-After approval, proceed to `/bug-verify`.
+## 下一阶段
+获得批准后，请执行 `/bug-verify`。

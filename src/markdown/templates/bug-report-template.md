@@ -1,58 +1,58 @@
-# Bug Report
+# bug报告
 
-## Bug Summary
-[Provide a clear, concise description of the bug]
+## bug摘要
+[提供清晰、简洁的bug描述]
 
-## Bug Details
+## bug详情
 
-### Expected Behavior
-[Describe what should happen]
+### 预期行为
+[描述系统应有的正常行为]
 
-### Actual Behavior  
-[Describe what actually happens]
+### 实际行为
+[描述当前实际发生的行为]
 
-### Steps to Reproduce
-1. [Step 1]
-2. [Step 2]
-3. [Step 3]
-4. [Observe the issue]
+### 复现步骤
+1. [步骤 1]
+2. [步骤 2]
+3. [步骤 3]
+4. [观察到问题现象]
 
-### Environment
-- **Version**: [Application/system version]
-- **Platform**: [OS, browser, device, etc.]
-- **Configuration**: [Relevant settings or environment details]
+### 运行环境
+- **版本**: [应用/系统版本号]
+- **平台**: [操作系统、浏览器、设备等]
+- **配置**: [相关设置或环境信息]
 
-## Impact Assessment
+## 影响评估
 
-### Severity
-- [ ] Critical - System unusable
-- [ ] High - Major functionality broken
-- [ ] Medium - Feature impaired but workaround exists
-- [ ] Low - Minor issue or cosmetic
+### 严重程度
+- [ ] 严重 —— 系统不可用
+- [ ] 高 —— 主要功能失效
+- [ ] 中 —— 功能受损但存在替代方案
+- [ ] 低 —— 轻微问题或仅界面瑕疵
 
-### Affected Users
-[Who is impacted by this bug?]
+### 受影响用户
+[哪些用户群体受到此bug影响？]
 
-### Affected Features
-[What functionality is broken or impaired?]
+### 受影响功能
+[哪些功能模块出现故障或性能下降？]
 
-## Additional Context
+## 补充上下文
 
-### Error Messages
+### 错误信息
 ```
-[Include any error messages, stack traces, or logs]
+[粘贴相关错误消息、堆栈跟踪或日志内容]
 ```
 
-### Screenshots/Media
-[Describe any visual evidence or attach files]
+### 截图/媒体
+[描述可视化证据或注明附件文件]
 
-### Related Issues
-[Reference any related bugs, features, or discussions]
+### 关联问题
+[引用相关bug、功能需求或讨论记录]
 
-## Initial Analysis
+## 初步分析
 
-### Suspected Root Cause
-[Initial thoughts on what might be causing the issue]
+### 可疑根本原因
+[初步推测可能导致此问题的原因]
 
-### Affected Components
-[List files, modules, or systems that might be involved]
+### 受影响组件
+[列出可能涉及的文件、模块或系统组件]

@@ -1,117 +1,117 @@
-# Bug Verify Command
+# bug验证命令
 
-Verify that the bug fix works correctly and doesn't introduce regressions.
+验证bug修复是否有效，且未引入回归问题。
 
-## Usage
+## 使用方式
 ```
-/bug-verify [bug-name]
+/bug-verify [bug名称]
 ```
 
-## Phase Overview
-**Your Role**: Thoroughly verify the fix works and document the results
+## 阶段概览
+**您的角色**：全面验证修复有效性，并记录验证结果
 
-This is Phase 4 (final) of the bug fix workflow. Your goal is to confirm the bug is resolved and the fix is safe.
+这是bug修复工作流的第四阶段（最终阶段）。您的目标是确认bug已解决，且修复安全无副作用。
 
-## Instructions
+## 操作说明
 
-You are working on the verification phase of the bug fix workflow.
+您当前处于bug修复工作流的“验证阶段”。
 
-1. **Prerequisites & Context Loading**
-   - Ensure the fix has been implemented
+1. **前置条件与上下文加载**
+   - 确保修复代码已实施完成
 
-   **Load ALL Context Once (Hierarchical Context Loading):**
+   **一次性加载全部上下文（分层上下文加载）：**
    ```bash
-   # Load bug templates for verification structure
+   # 加载bug验证模板结构
    claude-code-spec-workflow get-template-context bug
    ```
 
-   **Bug documents to read directly:**
-   - `.claude/bugs/{bug-name}/report.md`
-   - `.claude/bugs/{bug-name}/analysis.md`
-   - Understand what was changed and why
-   - Have the verification plan from analysis.md
+   **需直接读取的bug文档：**
+   - `bugs/{bugName}/report.md`
+   - `bugs/{bugName}/analysis.md`
+   - 理解变更内容及原因
+   - 参照 analysis.md 中的验证计划执行
 
-2. **Verification Process**
-   1. **Original Bug Testing**
-      - Reproduce the original steps from report.md
-      - Verify the bug no longer occurs
-      - Test edge cases mentioned in the analysis
+2. **验证流程**
+   1. **原始bug测试**
+      - 按 report.md 中的复现步骤操作
+      - 验证bug现象不再出现
+      - 测试分析文档中提及的边界情况
 
-   2. **Regression Testing**
-      - Test related functionality
-      - Verify no new bugs introduced
-      - Check integration points
-      - Run automated tests if available
+   2. **回归测试**
+      - 测试相关功能模块
+      - 验证未引入新bug
+      - 检查系统集成点是否正常
+      - 如有自动化测试，运行完整测试套件
 
-   3. **Code Quality Verification**
-      - Review code changes for quality
-      - Verify adherence to project standards
-      - Check error handling is appropriate
-      - Ensure tests are adequate
+   3. **代码质量验证**
+      - 审查代码变更质量
+      - 验证符合项目规范
+      - 检查错误处理是否恰当
+      - 确保测试覆盖充分
 
-3. **Verification Checklist**
-   - **Original Issue**: Bug reproduction steps no longer cause the issue
-   - **Related Features**: No regression in related functionality
-   - **Edge Cases**: Boundary conditions work correctly
-   - **Error Handling**: Errors are handled gracefully
-   - **Tests**: All tests pass, new tests added for regression prevention
-   - **Code Quality**: Changes follow project conventions
+3. **验证检查清单**
+   - **原始问题**：复现步骤不再触发bug
+   - **相关功能**：关联功能无回归问题
+   - **边界情况**：极端条件处理正确
+   - **错误处理**：异常情况被优雅处理
+   - **测试覆盖**：所有测试通过，新增回归防护测试
+   - **代码质量**：变更符合项目规范约定
 
-4. **Create Verification Document**
-   - **Template to Follow**: Use the bug verification template from the pre-loaded context above (do not reload)
-   - Document all test results following the bug verification template structure
+4. **创建验证文档**
+   - **遵循模板**：使用上方预加载上下文中的bug验证模板（请勿重新加载）
+   - 按照bug验证模板结构，完整记录所有测试结果
 
-## Template Usage
-- **Follow exact structure**: Use loaded verification template precisely
-- **Include all sections**: Don't omit any required template sections
-- **Complete checklist**: Follow the template's checklist format for thoroughness
+## 模板使用要求
+- **严格遵循结构**：精确使用已加载的验证模板
+- **包含所有章节**：不得遗漏任何必需模板章节
+- **完整检查清单**：按模板清单格式执行，确保验证全面
 
-5. **Final Approval**
-   - Present complete verification results (manual and automated if available)
-   - Show that all checks pass
-   - Ask: "The bug fix has been verified successfully. Is this bug resolved?"
-   - Get final confirmation before closing
+5. **最终审批**
+   - 提交完整验证结果（含手动与自动化测试结果，如适用）
+   - 展示所有检查项均已通过
+   - 询问：“bug修复已成功验证。此bug是否可视为已解决？”
+   - 获得用户最终确认后方可关闭bug
 
-## Verification Guidelines
+## 验证指南
 
-### Testing Approach
-- Test the exact scenario from the bug report
-- Verify fix works in different environments
-- Check that related features still work
-- Test error conditions and edge cases
+### 测试方法
+- 严格测试bug报告中的原始场景
+- 验证修复在不同环境下的有效性
+- 检查相关功能是否仍正常工作
+- 测试错误条件与边界情况
 
-### Quality Verification
-- Code follows project standards
-- Appropriate error handling added
-- No security implications
-- Performance not negatively impacted
+### 质量验证
+- 代码符合项目标准
+- 已添加恰当的错误处理
+- 无安全风险
+- 性能未受负面影响
 
-### Documentation Check
-- Code comments updated if needed
-- Any relevant docs reflect changes
-- Bug fix documented appropriately
+### 文档检查
+- 如有需要，已更新代码注释
+- 相关文档已同步变更
+- bug修复过程已适当记录
 
-## Completion Criteria
+## 完成标准
 
-The bug fix is complete when:
-- ✅ Original bug no longer occurs
-- ✅ No regressions introduced
-- ✅ All tests pass
-- ✅ Code follows project standards
-- ✅ Documentation is up to date
-- ✅ User confirms resolution
+bug修复视为完成，当且仅当：
+- ✅ 原始bug不再复现
+- ✅ 未引入任何回归问题
+- ✅ 所有测试通过
+- ✅ 代码符合项目规范
+- ✅ 文档已更新至最新
+- ✅ 用户确认问题已解决
 
-## Critical Rules
-- **THOROUGHLY** test the original bug scenario
-- **VERIFY** no regressions in related functionality
-- **DOCUMENT** all verification results
-- **GET** final user approval before considering bug resolved
+## 关键规则
+- **彻底**测试原始bug场景
+- **验证**相关功能无回归
+- **完整记录**所有验证结果
+- **必须获得**用户最终批准，方可视为bug已解决
 
-## Success Criteria
-A successful bug fix includes:
-- ✅ Root cause identified and addressed
-- ✅ Minimal, targeted fix implemented
-- ✅ Comprehensive verification completed
-- ✅ No regressions introduced
-- ✅ Appropriate tests added
-- ✅ User confirms issue resolved
+## 成功标准
+成功的bug修复应包含：
+- ✅ 根本原因已识别并解决
+- ✅ 实施最小化、精准修复
+- ✅ 完成全面验证
+- ✅ 未引入任何回归
+- ✅ 添加适当防护测试
+- ✅ 用户确认问题已修复

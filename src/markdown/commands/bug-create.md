@@ -1,91 +1,91 @@
-# Bug Create Command
+# bug创建命令
 
-Initialize a new bug fix workflow for tracking and resolving bugs.
+初始化新的bug修复工作流，用于跟踪和解决bug。
 
-## Usage
+## 使用方式
 ```
-/bug-create <bug-name> [description]
+/bug-create <bug名称> [描述]
 ```
 
-## Workflow Overview
+## 工作流概览
 
-This is the **streamlined bug fix workflow** - a lighter alternative to the full spec workflow for addressing bugs and issues.
+这是**简化版bug修复工作流** —— 为处理bug和问题而设计的轻量级替代方案，无需完整规范工作流的开销。
 
-### Bug Fix Phases
-1. **Report Phase** (This command) - Document the bug
-2. **Analysis Phase** (`/bug-analyze`) - Investigate root cause
-3. **Fix Phase** (`/bug-fix`) - Implement solution
-4. **Verification Phase** (`/bug-verify`) - Confirm resolution
+### bug修复阶段
+1. **报告阶段**（本命令）—— 记录bug
+2. **分析阶段**（`/bug-analyze`）—— 调查根本原因
+3. **修复阶段**（`/bug-fix`）—— 实施解决方案
+4. **验证阶段**（`/bug-verify`）—— 确认修复结果
 
-## Instructions
+## 操作说明
 
-You are helping create a new bug fix workflow. This is designed for smaller fixes that don't need the full spec workflow overhead.
+您正在协助创建一个新的bug修复工作流。本流程适用于无需完整规范流程开销的小型修复。
 
-1. **Create Directory Structure**
-   - Create `.claude/bugs/{bug-name}/` directory
-   - Initialize report.md, analysis.md, and verification.md files
+1. **创建目录结构**
+   - 创建目录 `bugs/{bugName}/`
+   - 初始化 report.md、analysis.md 和 verification.md 文件
 
-2. **Load ALL Context Once (Hierarchical Context Loading)**
-   Load complete context at the beginning for the bug creation process:
+2. **一次性加载全部上下文（分层上下文加载）**  
+   在bug创建工作开始时，一次性加载完整上下文：
 
    ```bash
-   # Load steering documents (if available)
+   # 加载调控文档（如存在）
    claude-code-spec-workflow get-steering-context
 
-   # Load bug templates
+   # 加载bug模板
    claude-code-spec-workflow get-template-context bug
    ```
 
-3. **Gather Bug Information**
-   - Take the bug name and optional description
-   - Guide user through bug report creation
-   - Use structured format for consistency
+3. **收集bug信息**
+   - 接收bug名称和可选描述
+   - 引导用户完成bug报告创建
+   - 使用结构化格式确保一致性
 
-4. **Generate Bug Report**
-   - **Template to Follow**: Use the bug report template from the pre-loaded context above (do not reload)
-   - Create detailed bug description following the bug report template structure
+4. **生成bug报告**
+   - **遵循模板**：使用上方预加载上下文中的bug报告模板（请勿重新加载）
+   - 按照bug报告模板结构，创建详细bug描述
 
-## Template Usage
-- **Follow exact structure**: Use loaded bug report template precisely
-- **Include all sections**: Don't omit any required template sections
-- **Structured format**: Follow the template's format for consistency
+## 模板使用要求
+- **严格遵循结构**：精确使用已加载的bug报告模板
+- **包含所有章节**：不得遗漏任何必需模板章节
+- **结构化格式**：遵循模板格式，确保一致性
 
-5. **Request User Input**
-   - Ask for bug details if not provided in description
-   - Guide through each section of the bug report
-   - Ensure all required information is captured
+5. **请求用户输入**
+   - 若描述中未提供详细信息，请向用户询问
+   - 引导用户逐项填写bug报告各章节
+   - 确保捕获所有必需信息
 
-6. **Save and Proceed**
-   - Save the completed bug report to report.md
-   - Ask: "Is this bug report accurate? If so, we can move on to the analysis."
-   - Wait for explicit approval before proceeding
+6. **保存并继续**
+   - 将完成的bug报告保存至 report.md
+   - 询问：“此bug报告是否准确？如无问题，我们将进入分析阶段。”
+   - 等待用户明确批准后再继续
 
-## Key Differences from Spec Workflow
+## 与规范工作流的关键区别
 
-- **Faster**: No requirements/design phases
-- **Targeted**: Focus on fixing existing functionality
-- **Streamlined**: 4 phases instead of detailed workflow
-- **Practical**: Direct from problem to solution
+- **更快速**：无需求/设计阶段
+- **更聚焦**：专注于修复现有功能
+- **更精简**：4个阶段，而非详细工作流
+- **更实用**：从问题直接导向解决方案
 
-## Rules
+## 规则
 
-- Only create ONE bug fix at a time
-- Always use kebab-case for bug names
-- Must analyze existing codebase during investigation
-- Follow existing project patterns and conventions
-- Do not proceed without user approval between phases
+- 一次仅创建一个bug修复流程
+- bug名称必须使用 kebab-case 格式（如 my-bug-name）
+- 调查阶段必须分析现有代码库
+- 必须遵循项目现有模式与规范
+- 各阶段之间未经用户批准不得继续
 
-## Error Handling
+## 错误处理
 
-If issues arise during the workflow:
-- **Bug unclear**: Ask targeted questions to clarify
-- **Too complex**: Suggest breaking into smaller bugs or using spec workflow
-- **Reproduction blocked**: Document blockers and suggest alternatives
+工作流执行中如遇问题：
+- **bug描述不清**：提出针对性问题以澄清
+- **过于复杂**：建议拆分为多个小bug或改用规范工作流
+- **无法复现**：记录阻碍点并建议替代方案
 
-## Example
+## 示例
 ```
-/bug-create login-timeout "Users getting logged out too quickly"
+/bug-create login-timeout "用户被登出过快"
 ```
 
-## Next Steps
-After bug report approval, proceed to `/bug-analyze` phase.
+## 下一步
+bug报告获得批准后，请进入 `/bug-analyze` 阶段。
